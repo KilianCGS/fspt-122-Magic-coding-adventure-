@@ -63,6 +63,19 @@ const LoginScreen = ({ onStartGame }) => {
     }
   };
 
+const handleLogout = () => {
+  localStorage.removeItem("token"); 
+  setLoggedIn(false);              
+  setFormData({                    
+    username: "",
+    password: "",
+    repeatPassword: "",
+    email: "",
+  });
+  setMode(null);                   
+};
+
+
   return (
     <div
       className="login-screen"
@@ -140,16 +153,20 @@ const LoginScreen = ({ onStartGame }) => {
           </>
         )}
 
-        {loggedIn && (
-          <div className="panel" style={{ marginTop: "50px", width: "500px", textAlign: "center" }}>
-            <h2>Bienvenido a la aventura</h2>
-            <p>
-              Aquí comienza tu aventura por el mundo del código. No temas equivocarte,
-              pues la sabiduría va de la mano con los errores.
-            </p>
-            <button type="button" onClick={onStartGame}>Entrar al mundo</button>
-          </div>
-        )}
+    {loggedIn && (
+  <div className="panel" style={{ marginTop: "50px", width: "500px", textAlign: "center" }}>
+    <h2>Bienvenido a la aventura</h2>
+    <p>
+      Aquí comienza tu aventura por el mundo del código. No temas equivocarte,
+      pues la sabiduría va de la mano con los errores.
+    </p>
+    <button type="button" onClick={onStartGame}>Entrar al mundo</button>
+    <button type="button" onClick={handleLogout} style={{ marginTop: "20px", background: "#ff5c5c" }}>
+      Cerrar sesión
+    </button>
+  </div>
+)}
+
 
         <div className="pixel-canvas">
           <PixelTrail
