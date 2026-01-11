@@ -163,7 +163,7 @@ const LoginScreen = ({ onStartGame }) => {
         </div>
 
         <div className="footer-buttons-container">
-          <button>About us</button>
+          <button onClick={() => navigate("/about" )}>About us</button>
           <button onClick={() => setMuted(!muted)}>
             {muted ? "Unmute 🔊" : "Mute 🔇"}
           </button>
